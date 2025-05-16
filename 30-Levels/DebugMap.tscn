@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://gaqfnqynj23h"]
+[gd_scene load_steps=5 format=3 uid="uid://gaqfnqynj23h"]
 
 [ext_resource type="PackedScene" uid="uid://cu0k43kqbntas" path="res://30-Levels/MapTemplate.tscn" id="1_74mxn"]
 [ext_resource type="PackedScene" uid="uid://c7goqc1x37imk" path="res://20-Entities/Player/Printagonist.tscn" id="2_2rbig"]
+[ext_resource type="Texture2D" uid="uid://dhg4uw5koibwn" path="res://10-Sprites/MapLineartTest.png" id="2_ksddl"]
+[ext_resource type="PackedScene" uid="uid://dr8a78hnmde7k" path="res://20-Entities/Player/LevelCam.tscn" id="4_ksddl"]
 
 [node name="DebugMap" type="Node2D"]
 
 [node name="MapSpriteTemplate" parent="." instance=ExtResource("1_74mxn")]
 position = Vector2(122, 3)
+texture = ExtResource("2_ksddl")
 
 [node name="Prin" parent="." instance=ExtResource("2_2rbig")]
-position = Vector2(7, -5)
-scale = Vector2(0.5, 0.5)
+position = Vector2(120, 38)
+scale = Vector2(0.15, 0.15)
+
+[node name="LevelCamera" parent="Prin" instance=ExtResource("4_ksddl")]
+zoom = Vector2(2, 2)

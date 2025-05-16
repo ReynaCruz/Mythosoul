@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7goqc1x37imk"]
+[gd_scene load_steps=14 format=3 uid="uid://c7goqc1x37imk"]
 
 [ext_resource type="Script" uid="uid://cot1kbu6as01e" path="res://40-Scripts/PrinScripts/PrinMain.gd" id="1_vakrg"]
 [ext_resource type="Texture2D" uid="uid://clg6632xp4s00" path="res://10-Sprites/000.png" id="1_w4om0"]
 [ext_resource type="Script" uid="uid://lyqjj1marnpp" path="res://40-Scripts/PrinScripts/PrinStateM.gd" id="3_7w550"]
+[ext_resource type="Script" uid="uid://d2tuxv8b8lyg6" path="res://40-Scripts/PrinScripts/PrinStates/SPA-UnarmedStates/SP1-PrinUnarmIdle.gd" id="4_uo0rq"]
+[ext_resource type="Script" uid="uid://dyyp3x0gd7aab" path="res://40-Scripts/PrinScripts/PrinStates/SPA-UnarmedStates/SP2-PrinUnarmedWalk.gd" id="5_fqn7k"]
+[ext_resource type="Script" uid="uid://p2wajnxmvy0x" path="res://40-Scripts/PrinScripts/PrinStates/SPA-UnarmedStates/SP3-PrinUnarmedRun.gd" id="6_piutp"]
+[ext_resource type="Script" uid="uid://chq53te07jdsk" path="res://40-Scripts/PrinScripts/PrinStates/SPA-UnarmedStates/SP4-PrinUnarmedDash.gd" id="7_dl7jd"]
+[ext_resource type="Script" uid="uid://pctujg5k3dqb" path="res://40-Scripts/PrinScripts/PrinStates/SPA-UnarmedStates/SP5-PrinUnarmedBlock.gd" id="8_3t217"]
+[ext_resource type="Script" uid="uid://dk4gcpc6wmujb" path="res://40-Scripts/PrinScripts/PrinStates/SPA-UnarmedStates/SP6-PrinUnarmedHeal.gd" id="9_jkpem"]
+[ext_resource type="Script" uid="uid://bl4l7dgh5ydcb" path="res://40-Scripts/PrinScripts/PrinStates/SPA-UnarmedStates/SP7-PrinUnarmedAttack1.gd" id="10_3i1dj"]
+[ext_resource type="Script" uid="uid://dpyyahrf4qc1k" path="res://40-Scripts/PrinScripts/PrinStates/SPA-UnarmedStates/SP8-PrinUnarmedAttack2.gd" id="11_dy7ct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ehae8"]
 radius = 41.7732
@@ -13,7 +21,8 @@ radius = 41.7732
 script = ExtResource("1_vakrg")
 
 [node name="PrinSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(16, 0)
+rotation = -1.5708
 texture = ExtResource("1_w4om0")
 
 [node name="PrinAnims" type="AnimationPlayer" parent="."]
@@ -28,5 +37,46 @@ debug_color = Color(0.161299, 0.627406, 0.427078, 0.42)
 shape = SubResource("RectangleShape2D_vakrg")
 disabled = true
 
-[node name="PrinStateMach" type="Node" parent="."]
+[node name="PrinStateMach" type="Node" parent="." node_paths=PackedStringArray("initState")]
 script = ExtResource("3_7w550")
+initState = NodePath("PrinUnIdle")
+
+[node name="PrinUnIdle" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("4_uo0rq")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://d2tuxv8b8lyg6"
+
+[node name="PrinUnWalk" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("5_fqn7k")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://dyyp3x0gd7aab"
+
+[node name="PrinUnRun" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("6_piutp")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://p2wajnxmvy0x"
+
+[node name="PrinUnDash" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("7_dl7jd")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://chq53te07jdsk"
+
+[node name="PrinUnBlock" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("8_3t217")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://pctujg5k3dqb"
+
+[node name="PrinUnHeal" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("9_jkpem")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://dk4gcpc6wmujb"
+
+[node name="PrinUnAtk1" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("10_3i1dj")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://bl4l7dgh5ydcb"
+
+[node name="PrinUnAtk2" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("11_dy7ct")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://dpyyahrf4qc1k"
