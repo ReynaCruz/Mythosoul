@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7goqc1x37imk"]
+
+[ext_resource type="Script" uid="uid://cot1kbu6as01e" path="res://40-Scripts/PrinScripts/PrinMain.gd" id="1_vakrg"]
+[ext_resource type="Texture2D" uid="uid://clg6632xp4s00" path="res://10-Sprites/000.png" id="1_w4om0"]
+[ext_resource type="Script" uid="uid://lyqjj1marnpp" path="res://40-Scripts/PrinScripts/PrinStateM.gd" id="3_7w550"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ehae8"]
+radius = 41.7732
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vakrg"]
+
+[node name="Prin" type="CharacterBody2D"]
+script = ExtResource("1_vakrg")
+
+[node name="PrinSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("1_w4om0")
+
+[node name="PrinAnims" type="AnimationPlayer" parent="."]
+
+[node name="PrinCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ehae8")
+debug_color = Color(0.161299, 0.627406, 0.427078, 0.42)
+
+[node name="PrinHitbox" type="Area2D" parent="."]
+
+[node name="PrinHitshape" type="CollisionShape2D" parent="PrinHitbox"]
+shape = SubResource("RectangleShape2D_vakrg")
+disabled = true
+
+[node name="PrinStateMach" type="Node" parent="."]
+script = ExtResource("3_7w550")

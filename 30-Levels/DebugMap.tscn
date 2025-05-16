@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://gaqfnqynj23h"]
+
+[ext_resource type="PackedScene" uid="uid://cu0k43kqbntas" path="res://30-Levels/MapTemplate.tscn" id="1_74mxn"]
+[ext_resource type="PackedScene" uid="uid://c7goqc1x37imk" path="res://20-Entities/Player/Printagonist.tscn" id="2_2rbig"]
+
+[node name="DebugMap" type="Node2D"]
+
+[node name="MapSpriteTemplate" parent="." instance=ExtResource("1_74mxn")]
+position = Vector2(122, 3)
+
+[node name="Prin" parent="." instance=ExtResource("2_2rbig")]
+position = Vector2(7, -5)
+scale = Vector2(0.5, 0.5)
