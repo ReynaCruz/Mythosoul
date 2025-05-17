@@ -1,13 +1,13 @@
-## STATE CODE FOR PRIN'S UNARMED ATTACK 2 STATE
+## STATE CODE FOR PRIN'S UNARMED HEAL STATE
 extends State
-class_name PrinUnAtk2
+class_name PrinUnHeal
 
 # Export variable to reference Prin's main root node
 @export var Prin: CharacterBody2D
 
 # Enter function: Happens first
 func Enter():
-	pass
+	print("Heal")
 
 # Update function: Happens every frame
 func Update(_delta: float):

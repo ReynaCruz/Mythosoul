@@ -1,13 +1,13 @@
-## STATE CODE FOR PRIN'S UNARMED ATTACK 1 STATE
+## STATE CODE FOR PRIN'S UNARMED BLOCK STATE
 extends State
-class_name PrinUnAtk1
+class_name PrinUnBlock
 
 # Export variable to reference Prin's main root node
 @export var Prin: CharacterBody2D
 
 # Enter function: Happens first
 func Enter():
-	pass
+	print("Block")
 
 # Update function: Happens every frame
 func Update(_delta: float):

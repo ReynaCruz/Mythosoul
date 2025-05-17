@@ -1,25 +1,24 @@
-## STATE CODE FOR PRIN'S UNARMED WALK STATE
+## STATE CODE FOR PRIN'S UNARMED RUN STATE
 extends State
-class_name PrinUnWalk
+class_name PrinUnRun
 
 # Export variable to reference Prin's main root node
 @export var Prin: CharacterBody2D
 
 # Enter function: Happens first
 func Enter():
-	print("Walk")
+	print("Run")
 
 # Update function: Happens every frame
 func Update(_delta: float):
-	pass
+	Prin.PrinAnims.play("004-PrinUnRun")
 
 # Physics update function: Happens every physics tick
 func PhysicsUpdate(_delta: float):
-	Prin.velocity = Prin.Dir * Prin.Walkspeed
+	Prin.velocity = Prin.Dir * Prin.Walkspeed * Prin.Runmult
 	
-	if Input.is_action_just_pressed("AcDash"):
-		Transitioned.emit(self, "PrinUnDash")
-	
+	if !Input.is_action_pressed("AcDash") and Prin.Dir:
+		Transitioned.emit(self, "PrinUnWalk")
 	if !Prin.Dir:
 		Transitioned.emit(self, "PrinUnIdle")
 

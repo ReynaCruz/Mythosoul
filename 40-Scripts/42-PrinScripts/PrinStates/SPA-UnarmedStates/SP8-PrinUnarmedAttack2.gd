@@ -1,13 +1,13 @@
-## STATE CODE FOR PRIN'S UNARMED IDLE STATE
+## STATE CODE FOR PRIN'S UNARMED ATTACK 2 STATE
 extends State
-class_name PrinUnIdle
+class_name PrinUnAtk2
 
 # Export variable to reference Prin's main root node
 @export var Prin: CharacterBody2D
 
 # Enter function: Happens first
 func Enter():
-	print("Idle")
+	print("Attack2")
 
 # Update function: Happens every frame
 func Update(_delta: float):
@@ -15,12 +15,7 @@ func Update(_delta: float):
 
 # Physics update function: Happens every physics tick
 func PhysicsUpdate(_delta: float):
-	
-	if Prin.Dir:
-		Transitioned.emit(self, "PrinUnWalk")
-	
-	if Input.is_action_just_pressed("AcDash"):
-		Transitioned.emit(self, "PrinUnDash")
+	pass
 
 # Exit function: Happens last before exiting
 func Exit():
