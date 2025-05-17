@@ -1,0 +1,596 @@
+[gd_scene load_steps=47 format=3 uid="uid://c7goqc1x37imk"]
+
+[ext_resource type="Script" uid="uid://cot1kbu6as01e" path="res://40-Scripts/42-PrinScripts/PrinMain.gd" id="1_vakrg"]
+[ext_resource type="Texture2D" uid="uid://dhi0p68ajvr2a" path="res://10-Sprites/PrinSpritesheet.png" id="2_7j81o"]
+[ext_resource type="Script" uid="uid://lyqjj1marnpp" path="res://40-Scripts/42-PrinScripts/PrinStateM.gd" id="3_7w550"]
+[ext_resource type="Texture2D" uid="uid://dqapsv2uou87v" path="res://10-Sprites/TesterSpear.png" id="3_iv4h4"]
+[ext_resource type="Script" uid="uid://d2tuxv8b8lyg6" path="res://40-Scripts/42-PrinScripts/PrinStates/SPA-UnarmedStates/SP1-PrinUnarmIdle.gd" id="4_uo0rq"]
+[ext_resource type="Script" uid="uid://dyyp3x0gd7aab" path="res://40-Scripts/42-PrinScripts/PrinStates/SPA-UnarmedStates/SP2-PrinUnarmedWalk.gd" id="5_fqn7k"]
+[ext_resource type="Script" uid="uid://p2wajnxmvy0x" path="res://40-Scripts/42-PrinScripts/PrinStates/SPA-UnarmedStates/SP3-PrinUnarmedRun.gd" id="6_piutp"]
+[ext_resource type="Script" uid="uid://chq53te07jdsk" path="res://40-Scripts/42-PrinScripts/PrinStates/SPA-UnarmedStates/SP4-PrinUnarmedDash.gd" id="7_dl7jd"]
+[ext_resource type="Script" uid="uid://pctujg5k3dqb" path="res://40-Scripts/42-PrinScripts/PrinStates/SPA-UnarmedStates/SP5-PrinUnarmedBlock.gd" id="8_3t217"]
+[ext_resource type="Script" uid="uid://dk4gcpc6wmujb" path="res://40-Scripts/42-PrinScripts/PrinStates/SPA-UnarmedStates/SP6-PrinUnarmedHeal.gd" id="9_jkpem"]
+[ext_resource type="Script" uid="uid://bl4l7dgh5ydcb" path="res://40-Scripts/42-PrinScripts/PrinStates/SPA-UnarmedStates/SP7-PrinUnarmedAttack1.gd" id="10_3i1dj"]
+[ext_resource type="Script" uid="uid://dpyyahrf4qc1k" path="res://40-Scripts/42-PrinScripts/PrinStates/SPA-UnarmedStates/SP8-PrinUnarmedAttack2.gd" id="11_dy7ct"]
+
+[sub_resource type="Animation" id="Animation_iv4h4"]
+resource_name = "PrinUnIdle"
+length = 0.0333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_p20kq"]
+resource_name = "PrinUnWalk"
+length = 0.26667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_pahg8"]
+resource_name = "PrinUnDash"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_8tq7a"]
+resource_name = "PrinUnRun"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_msfhf"]
+resource_name = "PrinUnBlock"
+length = 0.0333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_hk31l"]
+resource_name = "PrinUnAtk1"
+
+[sub_resource type="Animation" id="Animation_6ulfo"]
+resource_name = "PrinUnAtk2"
+
+[sub_resource type="Animation" id="Animation_7j81o"]
+resource_name = "008-PrinSpear1Idle"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponSprites:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6dvmq"]
+resource_name = "009-PrinSpear2Idle"
+length = 0.26667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ck0lg"]
+resource_name = "010-PrinSpear1Dash"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_qejy1"]
+resource_name = "011-PrinSpear1Run"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_mn8xx"]
+resource_name = "012-PrinSpear1Block"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_ik7rb"]
+resource_name = "013-PrinSpear1Atk1"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_t47qm"]
+resource_name = "014-PrinSpear1Atk2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [10, 11, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_ckffu"]
+resource_name = "015-PrinHammer1Idle"
+
+[sub_resource type="Animation" id="Animation_o8yla"]
+resource_name = "016-PrinHammer1Walk"
+
+[sub_resource type="Animation" id="Animation_7tw1f"]
+resource_name = "017-PrinHammer1Dash"
+
+[sub_resource type="Animation" id="Animation_ohhxi"]
+resource_name = "018-PrinHammer1Run"
+
+[sub_resource type="Animation" id="Animation_5osko"]
+resource_name = "019-PrinHammer1Block"
+
+[sub_resource type="Animation" id="Animation_7p0fa"]
+resource_name = "020-PrinHammer1Atk1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_qlao4"]
+resource_name = "021-PrinHammer1Atk2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_sq4xt"]
+resource_name = "022-PrinMagic1Idle"
+
+[sub_resource type="Animation" id="Animation_sp66t"]
+resource_name = "023-PrinMagic1Walk"
+
+[sub_resource type="Animation" id="Animation_6xl33"]
+resource_name = "024-PrinMagic1Dash"
+
+[sub_resource type="Animation" id="Animation_li8ye"]
+resource_name = "025-PrinMagic1Run"
+
+[sub_resource type="Animation" id="Animation_bnv35"]
+resource_name = "026-PrinMagic1Block"
+
+[sub_resource type="Animation" id="Animation_wnj4v"]
+resource_name = "027-PrinMagic1Atk1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_r1waw"]
+resource_name = "028-PrinMagic1Atk2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_471qm"]
+resource_name = "029-PrinDamaged"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [25, 26]
+}
+
+[sub_resource type="Animation" id="Animation_xfcfo"]
+resource_name = "030-PrinDead"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29, 30]
+}
+
+[sub_resource type="Animation" id="Animation_y5vmj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponSprites:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_msfhf"]
+_data = {
+&"001-PrinUnIdle": SubResource("Animation_iv4h4"),
+&"002-PrinUnWalk": SubResource("Animation_p20kq"),
+&"003-PrinUnDash": SubResource("Animation_pahg8"),
+&"004-PrinUnRun": SubResource("Animation_8tq7a"),
+&"005-PrinUnBlock": SubResource("Animation_msfhf"),
+&"006-PrinUnAtk1": SubResource("Animation_hk31l"),
+&"007-PrinUnAtk2": SubResource("Animation_6ulfo"),
+&"008-PrinSpear1Idle": SubResource("Animation_7j81o"),
+&"009-PrinSpear1Walk": SubResource("Animation_6dvmq"),
+&"010-PrinSpear1Dash": SubResource("Animation_ck0lg"),
+&"011-PrinSpear1Run": SubResource("Animation_qejy1"),
+&"012-PrinSpear1Block": SubResource("Animation_mn8xx"),
+&"013-PrinSpear1Atk1": SubResource("Animation_ik7rb"),
+&"014-PrinSpear1Atk2": SubResource("Animation_t47qm"),
+&"015-PrinHammer1Idle": SubResource("Animation_ckffu"),
+&"016-PrinHammer1Walk": SubResource("Animation_o8yla"),
+&"017-PrinHammer1Dash": SubResource("Animation_7tw1f"),
+&"018-PrinHammer1Run": SubResource("Animation_ohhxi"),
+&"019-PrinHammer1Block": SubResource("Animation_5osko"),
+&"020-PrinHammer1Atk1": SubResource("Animation_7p0fa"),
+&"021-PrinHammer1Atk2": SubResource("Animation_qlao4"),
+&"022-PrinMagic1Idle": SubResource("Animation_sq4xt"),
+&"023-PrinMagic1Walk": SubResource("Animation_sp66t"),
+&"024-PrinMagic1Dash": SubResource("Animation_6xl33"),
+&"025-PrinMagic1Run": SubResource("Animation_li8ye"),
+&"026-PrinMagic1Block": SubResource("Animation_bnv35"),
+&"027-PrinMagic1Atk1": SubResource("Animation_wnj4v"),
+&"028-PrinMagic1Atk2": SubResource("Animation_r1waw"),
+&"029-PrinDamaged": SubResource("Animation_471qm"),
+&"030-PrinDead": SubResource("Animation_xfcfo"),
+&"RESET": SubResource("Animation_y5vmj")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ehae8"]
+radius = 41.7732
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vakrg"]
+
+[node name="Prin" type="CharacterBody2D"]
+script = ExtResource("1_vakrg")
+
+[node name="PrinSprite" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_7j81o")
+hframes = 8
+vframes = 4
+
+[node name="WeaponSprites" type="Sprite2D" parent="."]
+visible = false
+rotation = -1.5708
+texture = ExtResource("3_iv4h4")
+hframes = 8
+vframes = 2
+
+[node name="PrinAnims" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_msfhf")
+}
+
+[node name="PrinCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ehae8")
+debug_color = Color(0.161299, 0.627406, 0.427078, 0.42)
+
+[node name="PrinHitbox" type="Area2D" parent="."]
+
+[node name="PrinHitshape" type="CollisionShape2D" parent="PrinHitbox"]
+shape = SubResource("RectangleShape2D_vakrg")
+disabled = true
+
+[node name="PrinStateMach" type="Node" parent="." node_paths=PackedStringArray("initState")]
+script = ExtResource("3_7w550")
+initState = NodePath("PrinUnIdle")
+
+[node name="PrinUnIdle" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("4_uo0rq")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://d2tuxv8b8lyg6"
+
+[node name="PrinUnWalk" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("5_fqn7k")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://dyyp3x0gd7aab"
+
+[node name="PrinUnRun" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("6_piutp")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://p2wajnxmvy0x"
+
+[node name="PrinUnDash" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("7_dl7jd")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://chq53te07jdsk"
+
+[node name="PrinUnBlock" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("8_3t217")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://pctujg5k3dqb"
+
+[node name="PrinUnHeal" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("9_jkpem")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://dk4gcpc6wmujb"
+
+[node name="PrinUnAtk1" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("10_3i1dj")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://bl4l7dgh5ydcb"
+
+[node name="PrinUnAtk2" type="Node" parent="PrinStateMach" node_paths=PackedStringArray("Prin")]
+script = ExtResource("11_dy7ct")
+Prin = NodePath("../..")
+metadata/_custom_type_script = "uid://dpyyahrf4qc1k"

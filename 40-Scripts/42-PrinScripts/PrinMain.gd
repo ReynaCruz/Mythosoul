@@ -13,6 +13,9 @@ var PointMouse: bool = true      # A boolean determining if Prin should be looki
 
 var Dir: Vector2                 # A Vector2 variable used for determining what direction Prin is moving in
 
+# Onready Vars
+@onready var PrinAnims: AnimationPlayer = $PrinAnims
+
 # Ready function: Happens as soon as the character is loaded into the scene
 func _ready():
 	Dir = Input.get_vector("AcLeft", "AcRight", "AcUp", "AcDown")
